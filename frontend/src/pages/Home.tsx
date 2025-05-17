@@ -41,7 +41,7 @@ export default function Home() {
       >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#FFF8E1]/50 via-[#FFFAF0]/50 to-white/50 border border-amber-100 rounded-3xl p-8 md:p-12 overflow-visible">
-            <ClientLogoGrid contained={true} />
+            <ClientLogoGrid/>
           </div>
         </div>
       </motion.section>
