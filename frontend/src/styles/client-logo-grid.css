@@ -1,0 +1,179 @@
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.scroll-left {
+  animation: scrollLeft linear infinite;
+  min-width: 200%;
+  animation-play-state: running;
+  animation-duration: var(--animation-duration, 60s);
+}
+
+.scroll-right {
+  animation: scrollRight linear infinite;
+  min-width: 200%;
+  animation-play-state: running;
+  animation-duration: var(--animation-duration, 60s);
+}
+
+.scroll-left.paused, .scroll-right.paused {
+  animation-play-state: paused;
+}
+
+.client-logo-container {
+  position: relative;
+}
+
+.client-tooltip {
+  position: fixed;
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 400px;
+  background-color: white;
+  border: 2px solid #F59E0B;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2147483647;
+  text-align: center;
+  max-height: 300px;
+  overflow: visible;
+}
+
+.client-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: white transparent transparent;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.1));
+}
+
+.client-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0;
+  border-style: solid;
+  border-color: #F59E0B transparent transparent;
+}
+
+.client-logo-container:hover .client-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.youtube-icon {
+  color: #F59E0B;
+}
+
+.instagram-icon {
+  color: #F59E0B;
+}
+
+/* Handle edge cases for tooltips that might get cut off at screen edges */
+.scroll-left .client-logo-container:first-child .client-tooltip,
+.scroll-left .client-logo-container:nth-child(2) .client-tooltip,
+.scroll-right .client-logo-container:first-child .client-tooltip,
+.scroll-right .client-logo-container:nth-child(2) .client-tooltip {
+  left: calc(100% + 15px);
+  right: auto;
+}
+
+.scroll-left .client-logo-container:last-child .client-tooltip,
+.scroll-left .client-logo-container:nth-last-child(2) .client-tooltip,
+.scroll-right .client-logo-container:last-child .client-tooltip,
+.scroll-right .client-logo-container:nth-last-child(2) .client-tooltip {
+  left: auto;
+  right: calc(100% + 15px);
+}
+
+/* Adjust arrow directions accordingly */
+.scroll-left .client-logo-container:first-child .client-tooltip::after,
+.scroll-left .client-logo-container:nth-child(2) .client-tooltip::after,
+.scroll-right .client-logo-container:first-child .client-tooltip::after,
+.scroll-right .client-logo-container:nth-child(2) .client-tooltip::after {
+  left: -10px;
+  right: auto;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.scroll-left .client-logo-container:first-child .client-tooltip::before,
+.scroll-left .client-logo-container:nth-child(2) .client-tooltip::before,
+.scroll-right .client-logo-container:first-child .client-tooltip::before,
+.scroll-right .client-logo-container:nth-child(2) .client-tooltip::before {
+  left: -12px;
+  right: auto;
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #F59E0B transparent transparent;
+}
+
+.scroll-left .client-logo-container:last-child .client-tooltip::after,
+.scroll-left .client-logo-container:nth-last-child(2) .client-tooltip::after,
+.scroll-right .client-logo-container:last-child .client-tooltip::after,
+.scroll-right .client-logo-container:nth-last-child(2) .client-tooltip::after {
+  left: auto;
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+.scroll-left .client-logo-container:last-child .client-tooltip::before,
+.scroll-left .client-logo-container:nth-last-child(2) .client-tooltip::before,
+.scroll-right .client-logo-container:last-child .client-tooltip::before,
+.scroll-right .client-logo-container:nth-last-child(2) .client-tooltip::before {
+  left: auto;
+  right: -12px;
+  border-width: 12px 0 12px 12px;
+  border-color: transparent transparent transparent #F59E0B;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+/* Tooltip positioning for first/second row */
+.tooltip-top {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.tooltip-bottom {
+  top: 100%;
+  bottom: auto;
+  margin-top: 10px;
+  margin-bottom: 0;
+} 

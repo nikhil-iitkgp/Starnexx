@@ -1,0 +1,29 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Agarwal",
+    "Anushkaa",
+    "Bhatib",
+    "Frenz",
+    "Gupta",
+    "Lilaramani",
+    "longform",
+    "Nikhil",
+    "Piyush",
+    "Rajeev",
+    "Rajiv",
+    "Saha",
+    "Sayantan",
+    "scrollbars",
+    "shortform",
+    "Starnexx"
+  ],
+  "ignoreRegExpList": [
+    "CSSProperties"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    ".git/**"
+  ]
+}
