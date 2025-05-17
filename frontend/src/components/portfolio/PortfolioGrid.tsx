@@ -185,7 +185,7 @@ function renderThumbnailGrid(thumbnails: ThumbnailProps[], container: any) {
       variants={container}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
     >
       {thumbnails.map((thumbnail, index) => (
         <ThumbnailCard key={index} {...thumbnail} />

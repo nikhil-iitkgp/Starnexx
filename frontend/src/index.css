@@ -78,10 +78,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overflow-y: auto; /* Ensure vertical scroll is enabled */
 }
 
 html {
   overflow-x: hidden;
+  overflow-y: auto; /* Ensure vertical scroll is enabled */
 }
 
 h1 {
@@ -229,8 +231,7 @@ html {
 
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -239,8 +240,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FBBF24;
-  border-radius: 8px;
+  background: #e0e0e0;
 }
 
 ::-webkit-scrollbar-thumb:hover {

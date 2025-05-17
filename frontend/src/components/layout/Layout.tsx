@@ -4,10 +4,10 @@ import Footer from "./Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen w-screen max-w-[100vw] overflow-x-hidden bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#FFF8E1]">
       <Navbar />
       <main className="flex-1 w-full flex flex-col overflow-x-hidden pt-20">
-        <div className="w-screen max-w-[100vw] overflow-x-hidden">
+        <div className="w-full overflow-x-hidden">
           {children}
         </div>
       </main>

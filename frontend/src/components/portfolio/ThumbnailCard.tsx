@@ -56,13 +56,12 @@ export default function ThumbnailCard({ imageUrl }: ThumbnailProps) {
               alt="Enlarged Thumbnail" 
               className="w-full h-auto object-contain max-h-[80vh] rounded-lg" 
             />
-            <button 
-              className="absolute top-4 right-4 bg-white/90 p-2 rounded-full hover:bg-white"
+            <button
               onClick={closeModal}
-              aria-label="Close thumbnail preview"
-              title="Close"
+              className="absolute top-4 right-4 z-50 bg-amber-400 hover:bg-amber-500 text-white rounded-full p-2 shadow-lg transition-all"
+              aria-label="Close"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
