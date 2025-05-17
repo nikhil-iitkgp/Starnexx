@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { Award, Repeat, Clock, Music, BadgeDollarSign } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const benefits = [
   {

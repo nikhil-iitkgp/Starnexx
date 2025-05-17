@@ -1,6 +1,6 @@
 import ServiceCard from "@/components/sections/ServiceCard";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface Service {
   title: string;

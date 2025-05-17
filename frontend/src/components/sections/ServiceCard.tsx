@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import type { ReactNode } from "react";
 
 type Props = {
   title: string;
   description: string;
   video: string;
-  icon?: string;
+  icon?: ReactNode;
   features?: string[];
 }
 
