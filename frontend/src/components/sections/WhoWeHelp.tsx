@@ -57,7 +57,7 @@ export default function WhoWeHelp() {
             >
               Who We Help
             </motion.h2>
-            <div className="h-1.5 bg-gradient-to-r from-amber-400 to-amber-500 w-3/4 mx-auto mt-3 rounded-full mb-4 animate-fade-in-up"></div>
+            <div className="h-1.5 bg-gradient-to-r from-amber-400 to-amber-500 w-1/2 mx-auto mt-3 rounded-full mb-4 animate-fade-in-up"></div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

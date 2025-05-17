@@ -34,4 +34,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #F59E0B;
+}
+
+/* Fix CSS warnings in browser console */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
 } 

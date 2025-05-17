@@ -61,6 +61,7 @@ export default function ComprehensiveServices({
             >
               {heading}
             </motion.h2>
+            <div className="h-1 bg-gradient-to-r from-amber-400 to-amber-500 w-1/2 mx-auto   mb-6 rounded-full"></div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -69,6 +70,7 @@ export default function ComprehensiveServices({
             >
               {description}
             </motion.p>
+            
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (

@@ -47,7 +47,8 @@ export default function About() {
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white border border-amber-200 rounded-3xl p-8 md:p-12 shadow-md">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Impact</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Our Impact</h2>
+              <div className="h-1 bg-gradient-to-r from-amber-400 to-amber-500 w-1/4 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 See the results we deliver for our clients
               </p>

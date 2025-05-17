@@ -244,7 +244,7 @@ export default function ClientLogoGrid() {
               className="text-3xl md:text-4xl font-bold text-gray-900 relative inline-block"
             >
               Our Clients
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-amber-300 to-amber-500 rounded-full"></div>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 mx-auto bg-gradient-to-r from-amber-300 to-amber-500 rounded-full"></div>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0 }}

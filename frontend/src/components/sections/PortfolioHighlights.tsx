@@ -78,7 +78,7 @@ function ScrollLockSection<T>({
       {/* Left: Description and Static Example */}
       <div className="flex-1 min-w-[320px] max-w-md md:sticky md:top-32 self-start flex flex-col justify-center">
         <div className="mb-8 mt-20 md:mt-12">
-          <p className="text-gray-600 mb-6 text-lg leading-relaxed bg-white/60 p-6 rounded-xl shadow-sm">{description}</p>
+          <p className="text-gray-600 mb-6 text-lg leading-relaxed bg-amber-50 p-6 rounded-xl shadow-sm">{description}</p>
         </div>
         <div className={getContainerClassName()}>
           {renderItem(featured, -1)}
@@ -135,10 +135,11 @@ export default function PortfolioHighlights() {
       <div className="w-full max-w-7xl mx-auto">
         {/* Main Portfolio Heading */}
         <div className="text-center mb-24">
-          <h2 className="section-heading animate-fade-in-up">
-            Our Portfolio
-            <div className="section-heading-underline"></div>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900  mb-16">
+            Preview Our Work
+            <div className="h-1 bg-gradient-to-r from-amber-400 to-amber-500 w-1/2 mx-auto mt-2 rounded-full"></div>
           </h2>
+          
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
             Discover our exceptional work that showcases our expertise in various video editing formats and thumbnail design.
           </p>

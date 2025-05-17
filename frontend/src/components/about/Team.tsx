@@ -71,7 +71,7 @@ export default function Team() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl font-bold text-gray-900 mb-4">Our Team</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto mb-6 rounded-full"></div>
+          <div className="w-1/2 h-1 bg-amber-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Meet the talented professionals behind our success. Expertise, creativity, and dedication drive everything we do.
           </p>
