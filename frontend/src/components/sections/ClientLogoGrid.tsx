@@ -199,7 +199,7 @@ const InfiniteLogoScroll = ({
   return (
     <div className="relative w-full overflow-visible py-8">
       <div 
-        className={`flex gap-16 ${animationClass} ${isPaused ? 'paused' : ''}`}
+        className={`flex gap-6 sm:gap-12 md:gap-16 ${animationClass} ${isPaused ? 'paused' : ''}`}
         style={{ ['--animation-duration' as any]: `${speed}s` }}
       >
         {doubledClients.map((client, index) => (

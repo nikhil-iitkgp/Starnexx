@@ -62,22 +62,22 @@ export default function PortfolioGrid({
           onValueChange={(value) => setActiveTab(value as any)}
           className="mb-8"
         >
-          <TabsList className="mx-auto bg-amber-50 border border-amber-100 p-1">
+          <TabsList className="mx-auto bg-amber-50 border border-amber-100 p-1 flex flex-col gap-2 sm:flex-row sm:gap-0 w-full sm:w-auto">
             <TabsTrigger 
               value="longform"
-              className={activeTab === 'longform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}
+              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'longform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Longform
             </TabsTrigger>
             <TabsTrigger 
               value="shortform"
-              className={activeTab === 'shortform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}
+              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'shortform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Shortform
             </TabsTrigger>
             <TabsTrigger 
               value="thumbnail"
-              className={activeTab === 'thumbnail' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}
+              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'thumbnail' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Thumbnails
             </TabsTrigger>
