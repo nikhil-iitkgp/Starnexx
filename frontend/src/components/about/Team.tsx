@@ -107,7 +107,8 @@ export default function Team() {
               <p className="text-gray-500 text-center">{member.bio}</p>
               
               <div className="mt-6 flex space-x-4">
-                <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s Facebook profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-200 hover:text-white transition-colors duration-300 text-amber-300">
+                <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s Facebook profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-2
+                00 hover:text-white transition-colors duration-300 text-amber-300">
                   <Facebook size={18} />
                 </a>
                 <a href={member.social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s Instagram profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-200 hover:text-white transition-colors duration-300 text-amber-500">
