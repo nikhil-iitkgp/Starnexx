@@ -208,7 +208,7 @@ export default function PortfolioHighlights() {
       }
       
       /* Special styling for shortform section */
-      .shortform-section * {
+      .shortform-section *:not(.service-title-card):not(.service-title-card *) {
         background-color: transparent !important;
         box-shadow: none !important;
         border: none !important;
