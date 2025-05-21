@@ -137,17 +137,19 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover }) => {
       className="flex-shrink-0 relative client-logo-container group z-1"
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
+      style={{ position: 'relative' }}
     >
       {/* Tooltip */}
       <div
         className={`
           absolute left-1/2 -translate-x-1/2
-          opacity-0 pointer-events-none z-10
-          group-hover:opacity-100 group-hover:pointer-events-auto group-hover:z-50
+          opacity-0 pointer-events-none z-[9999]
+          group-hover:opacity-100 group-hover:pointer-events-auto group-hover:z-[9999]
           transition-all duration-200
           bg-white border-2 border-amber-400 rounded-xl p-4 shadow-lg text-center
           ${client.id <= 7 ? 'tooltip-top' : 'tooltip-bottom'}
         `}
+        style={{ position: 'absolute' }}
       >
         <h3 className="text-lg font-bold text-gray-900">{client.name}</h3>
         {client.designation && (
@@ -181,7 +183,7 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover }) => {
 const InfiniteLogoScroll = ({
   clients,
   direction = "left",
-  speed = 30,
+  speed = 3,
 }: {
   clients: typeof clientData;
   direction: "left" | "right";
@@ -190,19 +192,30 @@ const InfiniteLogoScroll = ({
   // State to track if any logo is being hovered
   const [isPaused, setIsPaused] = useState(false);
   
-  // Create a doubled set of clients to ensure we have enough for continuous scrolling
-  const doubledClients = [...clients, ...clients];
+  // Create 10 repetitions of clients to ensure a very long continuous scrolling effect
+  const repeatedClients = [];
+  for (let i = 0; i < 10; i++) {
+    repeatedClients.push(...clients);
+  }
   
   // Animation style class based on direction
   const animationClass = direction === "left" ? "scroll-left" : "scroll-right";
   
+  // Calculate animation duration based on number of clients
+  // The more clients, the longer the animation should take to maintain consistent speed
+  const duration = speed ; // Animation takes 10x the base speed to complete a full cycle
+  
   return (
-    <div className="relative w-full overflow-visible py-8">
+    <div className="relative w-full overflow-visible py-8" style={{ isolation: 'isolate' }}>
       <div 
         className={`flex gap-6 sm:gap-12 md:gap-16 ${animationClass} ${isPaused ? 'paused' : ''}`}
-        style={{ ['--animation-duration' as any]: `${speed}s` }}
+        style={{ 
+          ['--animation-duration' as any]: `${duration}s`,
+          position: 'relative',
+          zIndex: 1
+        }}
       >
-        {doubledClients.map((client, index) => (
+        {repeatedClients.map((client, index) => (
           <ClientLogo 
             key={`${client.id}-${index}`} 
             client={client} 
@@ -261,7 +274,7 @@ export default function ClientLogoGrid() {
             <InfiniteLogoScroll 
               clients={firstRowClients} 
               direction="left" 
-              speed={60} 
+              speed={10} 
             />
           </div>
 
@@ -270,7 +283,7 @@ export default function ClientLogoGrid() {
             <InfiniteLogoScroll 
               clients={secondRowClients} 
               direction="right" 
-              speed={65} 
+              speed={10} 
             />
           </div>
         </motion.div>

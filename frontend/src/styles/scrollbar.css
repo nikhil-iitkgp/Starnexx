@@ -2,7 +2,7 @@
 
 /* Cross-browser scrollbar styles */
 
-/* Base scrollbar hide class */
+/* Base scrollbar hide class - Only for elements that need hidden scrollbars */
 /* Note: 'scrollbar-width' and '-ms-overflow-style' are not supported in all browsers. Use webkit scrollbars as fallback for Chrome/Safari. */
 .hidden-scrollbar {
   /* Firefox */
@@ -16,10 +16,11 @@
   display: none;
 }
 
-/* Custom scrollbar styling for browsers that support it */
+/* Custom scrollbar styling for the main browser scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
   height: 8px;
+  display: block; /* Ensure scrollbar is visible */
 }
 
 ::-webkit-scrollbar-track {
@@ -40,6 +41,14 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  margin: 0;
+  min-height: 100vh;
 }
 
 * {

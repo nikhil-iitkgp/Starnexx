@@ -1,85 +1,216 @@
 import { User, FileText, CheckCircle, MessageSquare } from "lucide-react";
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
+import { useEffect } from "react";
 
 const steps = [
   {
-    icon: <FileText className="w-12 h-12 text-amber-500" />, 
+    icon: <FileText className="w-10 h-10 text-amber-500" />, 
     title: "Fill Our Contact Us Form",
     description: "Step 1",
   },
   {
-    icon: <MessageSquare className="w-12 h-12 text-amber-500" />, 
+    icon: <MessageSquare className="w-10 h-10 text-amber-500" />, 
     title: "Our Video Experts will connect with you",
     description: "Step 2",
   },
   {
-    icon: <User className="w-12 h-12 text-amber-500" />, 
+    icon: <User className="w-10 h-10 text-amber-500" />, 
     title: "Finalise Synopsis & Creator",
     description: "Step 3",
   },
   {
-    icon: <CheckCircle className="w-12 h-12 text-amber-500" />, 
+    icon: <CheckCircle className="w-10 h-10 text-amber-500" />, 
     title: "Video Review/Approval",
     description: "Step 4",
   },
 ];
 
 export default function HowDoesOurAgencyWorks() {
+  const controls = useAnimation();
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        when: "beforeChildren"
+      }
+    }
+  };
+  
+  const stepVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        delay: i * 0.2
+      }
+    }),
+    hover: { 
+      y: -10,
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 15
+      }
+    }
+  };
+  
+  const iconContainerVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 20
+      }
+    },
+    hover: {
+      scale: 1.1,
+      boxShadow: "0 10px 15px -5px rgba(251, 191, 36, 0.3)",
+      transition: {
+        type: "spring",
+        stiffness: 400
+      }
+    }
+  };
+  
+  const iconVariants = {
+    hidden: { scale: 0, rotate: -45 },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300
+      }
+    },
+    hover: {
+      rotate: [0, -10, 10, -5, 5, 0],
+      transition: {
+        duration: 0.4
+      }
+    }
+  };
+  
+  const lineVariants = {
+    hidden: { width: "0%", opacity: 0 },
+    visible: {
+      width: "100%",
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.5
+      }
+    }
+  };
+  
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+  
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white">
-      {/* Decorative blurred gradient shapes */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.25 }}
-        transition={{ duration: 1 }}
-        className="hidden md:block absolute -top-20 -left-20 w-72 h-72 bg-amber-200 rounded-full blur-3xl z-0"
-      />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="hidden md:block absolute -bottom-24 right-0 w-96 h-96 bg-amber-100 rounded-full blur-3xl z-0"
-      />
-      <div className="w-full max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <section className="py-16 bg-amber-50 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          className="text-center mb-12"
+          initial="hidden"
+          animate="visible"
+          variants={titleVariants}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             How Does Our Agency Work?
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto mt-6">
-            We as a top video production agency in India, position your brand superior with pocket-friendly and edgy videos. Make your brand stand out in the consumer's mind with snackable creator-generated content as people trust it 10X times more than text!
+          <motion.div 
+            className="h-1 bg-amber-500 w-1/3 mx-auto mb-6 rounded-full"
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: "33%", opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          ></motion.div>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            We as a top video production agency in India, position your brand superior with pocket-friendly 
+            and edgy videos. Make your brand stand out in the consumer's mind with snackable creator-generated 
+            content as people trust it 10X times more than text!
           </p>
-        </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 relative">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex flex-col items-center text-center relative z-10 w-full md:w-1/4 group"
-            >
-              <div className="bg-white rounded-2xl shadow-xl border-2 border-amber-100 p-8 mb-4 flex items-center justify-center">
-                {step.icon}
-              </div>
-              <div className="font-semibold text-lg text-gray-800 mb-1 group-hover:text-amber-600 transition-colors duration-300">{step.title}</div>
-              <div className="text-amber-500 font-medium text-sm mb-2">{step.description}</div>
-              {idx < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 right-0 w-full h-1 border-t-2 border-dashed border-amber-300 z-0 stepper-line"></div>
-              )}
-            </motion.div>
-          ))}
-        </div>
-        {/* Mobile stepper line */}
-        <div className="md:hidden flex justify-between items-center mt-8">
-          {steps.map((_, idx) => (
-            idx < steps.length - 1 && (
-              <div key={idx} className="flex-1 h-1 border-t-2 border-dashed border-amber-300 mx-2"></div>
-            )
-          ))}
-        </div>
+        </motion.div>
+
+        <motion.div 
+          className="mt-16 relative"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          {/* Connecting line */}
+          <motion.div 
+            className="hidden md:block absolute top-10 left-0 right-0 h-0.5 bg-amber-200 z-0"
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+          ></motion.div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between relative z-10">
+            {steps.map((step, idx) => (
+              <motion.div
+                key={idx}
+                custom={idx}
+                variants={stepVariants}
+                whileHover="hover"
+                className="flex flex-col items-center text-center w-full md:w-1/4 mb-8 md:mb-0"
+              >
+                <motion.div 
+                  className="bg-white rounded-xl shadow-md p-4 w-20 h-20 flex items-center justify-center mb-4"
+                  variants={iconContainerVariants}
+                  whileHover="hover"
+                  style={{ backgroundColor: "#FFFFFF" }}
+                >
+                  <motion.div
+                    variants={iconVariants}
+                    whileHover="hover"
+                  >
+                    {step.icon}
+                  </motion.div>
+                </motion.div>
+                <motion.h3 
+                  className="text-md font-semibold text-gray-900 mb-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 + idx * 0.1 }}
+                >
+                  {step.title}
+                </motion.h3>
+                <motion.p 
+                  className="text-amber-500 font-medium text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 + idx * 0.1 }}
+                >
+                  {step.description}
+                </motion.p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

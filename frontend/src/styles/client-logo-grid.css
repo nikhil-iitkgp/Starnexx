@@ -3,13 +3,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% / 10));
   }
 }
 
 @keyframes scrollRight {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% / 10));
   }
   100% {
     transform: translateX(0);
@@ -17,25 +17,88 @@
 }
 
 .scroll-left {
-  animation: scrollLeft linear infinite;
-  min-width: 200%;
-  animation-play-state: running;
-  animation-duration: var(--animation-duration, 60s);
+  animation: scrollLeft var(--animation-duration, 30s) linear infinite;
+  width: max-content;
+  overflow: visible !important;
 }
 
 .scroll-right {
-  animation: scrollRight linear infinite;
-  min-width: 200%;
-  animation-play-state: running;
-  animation-duration: var(--animation-duration, 60s);
+  animation: scrollRight var(--animation-duration, 30s) linear infinite;
+  width: max-content;
+  overflow: visible !important;
 }
 
-.scroll-left.paused, .scroll-right.paused {
-  animation-play-state: paused;
+.paused {
+  animation-play-state: paused !important;
 }
 
 .client-logo-container {
   position: relative;
+  isolation: isolate;
+  overflow: visible !important;
+}
+
+/* Force tooltips to be visible above overflow hidden containers */
+.client-logo-container:hover {
+  z-index: 9999 !important;
+}
+
+/* Position tooltip container to always be visible */
+.tooltip-top, .tooltip-bottom {
+  position: absolute !important;
+  transform: translateX(-50%) !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  max-width: 200px; /* Control max width */
+  width: max-content; /* Allow dynamic width based on content */
+}
+
+/* Smart positioning for tooltips near screen edges */
+@media (max-width: 768px) {
+  .tooltip-top, .tooltip-bottom {
+    max-width: 160px;
+  }
+}
+
+/* Adjust tooltip position when it would overflow viewport */
+.client-logo-container {
+  position: relative;
+}
+
+/* Prevent tooltips from being cut off at the edges */
+.client-logo-container:nth-child(1) .tooltip-top,
+.client-logo-container:nth-child(1) .tooltip-bottom,
+.client-logo-container:nth-child(2) .tooltip-top,
+.client-logo-container:nth-child(2) .tooltip-bottom {
+  left: 0 !important;
+  transform: translateX(0) !important;
+}
+
+.client-logo-container:nth-last-child(1) .tooltip-top,
+.client-logo-container:nth-last-child(1) .tooltip-bottom,
+.client-logo-container:nth-last-child(2) .tooltip-top,
+.client-logo-container:nth-last-child(2) .tooltip-bottom {
+  left: auto !important;
+  right: 0 !important;
+  transform: translateX(0) !important;
+}
+
+/* Adjust arrows for edge tooltips */
+.client-logo-container:nth-child(1) .tooltip-top::after,
+.client-logo-container:nth-child(2) .tooltip-top::after,
+.client-logo-container:nth-child(1) .tooltip-bottom::after,
+.client-logo-container:nth-child(2) .tooltip-bottom::after {
+  left: 20px;
+  transform: none;
+}
+
+.client-logo-container:nth-last-child(1) .tooltip-top::after,
+.client-logo-container:nth-last-child(2) .tooltip-top::after,
+.client-logo-container:nth-last-child(1) .tooltip-bottom::after,
+.client-logo-container:nth-last-child(2) .tooltip-bottom::after {
+  left: auto;
+  right: 20px;
+  transform: none;
 }
 
 .client-tooltip {
@@ -166,14 +229,58 @@
 
 /* Tooltip positioning for first/second row */
 .tooltip-top {
-  top: auto;
   bottom: 100%;
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
+
 .tooltip-bottom {
   top: 100%;
-  bottom: auto;
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin-top: 15px;
+}
+
+/* Create arrows for tooltips */
+.tooltip-top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #F59E0B transparent transparent;
+}
+
+.tooltip-bottom::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #F59E0B;
+}
+
+/* Improve clickability of social links */
+.client-logo-container:hover .transition-transform {
+  pointer-events: all !important;
+  z-index: 100 !important;
+  position: relative !important;
+}
+
+.client-logo-container .group-hover\:pointer-events-auto {
+  pointer-events: all !important;
+}
+
+/* Ensure tooltip appears above everything else and has clickable links */
+.client-logo-container:hover .group-hover\:z-50 {
+  z-index: 100 !important;
+  pointer-events: all !important;
+}
+
+/* Force links to be always clickable */
+.client-logo-container a {
+  position: relative;
+  z-index: 200;
+  pointer-events: auto !important;
 } 

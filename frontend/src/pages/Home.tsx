@@ -32,7 +32,7 @@ export default function Home() {
 
       {/* Client Logo Grid */}
       <motion.section
-        className="py-16"
+        className="py-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -46,11 +46,14 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <SectionDivider />
+      {/* Reduce the spacing by using a smaller SectionDivider */}
+      <div className="w-full max-w-7xl mx-auto px-4 py-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent opacity-80" />
+      </div>
 
       {/* Portfolio Highlights */}
       <motion.section
-        className="py-16"
+        className="py-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

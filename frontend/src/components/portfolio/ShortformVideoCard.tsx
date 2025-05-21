@@ -72,7 +72,7 @@ export default function ShortformVideoCard({
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5, // When 50% of the video is visible
+        threshold: 0.3, // Reduced threshold to start playing sooner when scrolling
       }
     );
     
@@ -122,7 +122,7 @@ export default function ShortformVideoCard({
   const handleSourceClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (originalSource) {
-      window.open(originalSource, '_blank');
+      window.open(originalSource, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -135,61 +135,63 @@ export default function ShortformVideoCard({
         ref={containerRef}
         whileHover={{ y: -5 }}
         transition={{ duration: 0.3 }}
-        className="relative overflow-hidden rounded-xl shadow-md bg-transparent border border-amber-100"
+        className="relative overflow-hidden rounded-xl aspect-[9/16] min-w-[180px] sm:min-w-[220px] md:min-w-[240px] max-w-[280px] mx-auto mb-4 sm:mb-6"
+        style={{ 
+          background: 'transparent', 
+          boxShadow: 'none', 
+          border: 'none',
+          backgroundColor: 'transparent'
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
       >
-        {/* Container with portrait aspect ratio */}
-        <div 
-          className="portrait-video-container cursor-pointer portrait-aspect"
-          onClick={handleClick}
-        >
-          {/* Video element */}
-          <video
-            ref={videoRef}
-            src={videoUrl}
-            poster={thumbnailUrl || undefined}
-            muted
-            playsInline
-            loop
-            className="w-full h-full object-cover"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-          />
-          
-          {/* Play/pause overlay */}
-          {!isPlaying && (
-            <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-              <div className="w-14 h-14 rounded-full bg-amber-500 flex items-center justify-center">
-                <Play className="w-7 h-7 text-white" fill="white" />
+        {/* Video element */}
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          poster={thumbnailUrl || undefined}
+          muted
+          playsInline
+          loop
+          className="w-full h-full object-cover rounded-xl portrait-aspect"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          preload="metadata"
+        />
+        
+        {/* Play/pause overlay */}
+        {!isPlaying && (
+          <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-80'}`}>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-500 flex items-center justify-center">
+              <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="white" />
+            </div>
+            
+            {/* Instagram badge */}
+            {originalSource && (
+              <div 
+                className="absolute bottom-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
+                onClick={handleSourceClick}
+              >
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-pink-600" />
               </div>
-              
-              {/* Instagram badge */}
-              {originalSource && (
-                <div 
-                  className="absolute bottom-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer"
-                  onClick={handleSourceClick}
-                >
-                  <Instagram className="w-5 h-5 text-pink-600" />
-                </div>
-              )}
-            </div>
-          )}
-          
-          {/* Pause indicator when playing */}
-          {isPlaying && isHovered && (
-            <div className="absolute bottom-3 right-3 flex gap-2">
-              {originalSource && (
-                <div 
-                  className="bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer"
-                  onClick={handleSourceClick}
-                >
-                  <ExternalLink className="w-5 h-5 text-amber-600" />
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
+        
+        {/* Pause indicator when playing */}
+        {isPlaying && (
+          <div className="absolute bottom-3 right-3 flex gap-2">
+            {originalSource && (
+              <div 
+                className="bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
+                onClick={handleSourceClick}
+              >
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+              </div>
+            )}
+          </div>
+        )}
       </motion.div>
     </>
   );

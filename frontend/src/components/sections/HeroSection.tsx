@@ -100,7 +100,7 @@ export function HeroSection() {
   // Animation variant for arrow icon
 
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center bg-gradient-to-b from-white via-amber-50/40 to-amber-100/30 overflow-hidden">
+    <section className="relative w-full min-h-[90vh] flex items-center bg-gradient-to-b from-white via-amber-50/40 to-amber-100/30">
       <div className="absolute inset-0 bg-[url('/grid-pattern.png')] opacity-5" />
       <div className="relative w-full max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col lg:flex-row items-center">
         {/* Left: Text */}

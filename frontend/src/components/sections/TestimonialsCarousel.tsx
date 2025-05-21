@@ -4,6 +4,7 @@ import { Autoplay, Pagination, EffectCards } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/effect-cards"
+import { Star } from "lucide-react"
 
 const testimonials = [
   {
@@ -64,10 +65,11 @@ export default function TestimonialsCarousel() {
     <div className="w-full py-16 bg-gradient-to-b from-amber-50/80 to-amber-100/40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Testimonials
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="h-1 bg-gradient-to-r from-amber-400 to-amber-500 w-1/4 mx-auto mt-2 rounded-full mb-6"></div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             What our clients say about our services
           </p>
         </div>
@@ -77,11 +79,11 @@ export default function TestimonialsCarousel() {
             modules={[Autoplay, Pagination, EffectCards]}
             effect="cards"
             cardsEffect={{
-              slideShadows: false,
+              slideShadows: true,
               perSlideOffset: 8,
               perSlideRotate: 2,
             }}
-            autoplay={{ delay: 1000 }}
+            autoplay={{ delay: 1000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             loop
             slidesPerView={1}
@@ -90,18 +92,26 @@ export default function TestimonialsCarousel() {
           >
             {testimonials.map((t, index) => (
               <SwiperSlide key={index} className="w-full">
-                <div className="relative bg-black rounded-lg overflow-hidden">
-                  {/* Decorative outline frames */}
-                  <div className="absolute top-0 left-0 w-full h-full border-2 border-white/20 rounded-lg transform rotate-1 translate-x-1 translate-y-1"></div>
-                  <div className="absolute top-0 left-0 w-full h-full border-2 border-white/20 rounded-lg transform -rotate-1 -translate-x-1 -translate-y-1"></div>
+                <div className="relative bg-gradient-to-br from-white via-amber-50 to-amber-100 rounded-xl overflow-hidden shadow-xl border border-amber-200">
+                  {/* Gold accent corner */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-amber-500 transform rotate-45 translate-x-8 -translate-y-8"></div>
                   
                   <div className="relative z-10 p-8 md:p-10">
-                    <p className="text-white text-lg md:text-xl font-medium leading-relaxed mb-6">
+                    {/* Five stars */}
+                    <div className="flex mb-4 text-amber-500">
+                      <Star className="w-5 h-5 fill-current" />
+                      <Star className="w-5 h-5 fill-current" />
+                      <Star className="w-5 h-5 fill-current" />
+                      <Star className="w-5 h-5 fill-current" />
+                      <Star className="w-5 h-5 fill-current" />
+                    </div>
+                    
+                    <p className="text-gray-800 text-lg md:text-xl font-medium leading-relaxed mb-6">
                       "{t.quote}"
                     </p>
-                    <div className="mt-auto">
-                      <p className="text-amber-400 font-semibold">{t.name}</p>
-                      <p className="text-amber-400/80 text-sm">{t.role}</p>
+                    <div className="mt-auto border-t border-amber-200 pt-4">
+                      <p className="text-amber-600 font-semibold">{t.name}</p>
+                      <p className="text-amber-600/80 text-sm">{t.role}</p>
                     </div>
                   </div>
                 </div>

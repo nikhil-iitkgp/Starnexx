@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 import { Facebook, Linkedin, Instagram } from "lucide-react"
 
 const team = [
@@ -50,28 +49,56 @@ export default function Team() {
   }
   
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.6
+      }
+    }
+  }
+  
+  const socialIconVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: { scale: 1, opacity: 1 },
+    hover: { scale: 1.2, rotate: 5 }
+  }
+  
+  const headingVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 70,
+        duration: 0.7
       }
     }
   }
 
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-amber-50/70 to-orange-50/40 overflow-x-hidden">
+    <section className="w-full py-16 bg-amber-50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mb-16"
+          variants={headingVariants}
+          className="text-center mb-12"
         >
           <h2 className="text-5xl font-bold text-gray-900 mb-4">Our Team</h2>
-          <div className="w-1/2 h-1 bg-amber-500 mx-auto mb-6 rounded-full"></div>
+          <motion.div 
+            className="w-1/2 h-1 bg-amber-500 mx-auto mb-6 rounded-full"
+            initial={{ width: 0, opacity: 0 }}
+            whileInView={{ width: "50%", opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          ></motion.div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Meet the talented professionals behind our success. Expertise, creativity, and dedication drive everything we do.
           </p>
@@ -82,58 +109,91 @@ export default function Team() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-10"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-8"
         >
           {team.map((member, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-amber-100 p-8 flex flex-col items-center"
+              whileHover={{ 
+                y: -12, 
+                transition: { duration: 0.3 },
+                boxShadow: "0 10px 25px -5px rgba(251, 191, 36, 0.2)"
+              }}
+              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-8 flex flex-col items-center"
+              style={{ backgroundColor: "#FFFFFF" }}
             >
               <div className="relative mb-6 group">
-                <div className="absolute inset-0 bg-amber-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                <img
+                <motion.div 
+                  className="absolute inset-0 bg-amber-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+                  whileHover={{ scale: 1.05 }}
+                ></motion.div>
+                <motion.img
                   src={member.img}
                   alt={member.name}
-                  className="w-36 h-36 rounded-full shadow-lg border-2 border-amber-200 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-28 h-28 rounded-full border-2 border-amber-200 object-cover transition-transform duration-300 group-hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                 />
-                <div className="absolute -bottom-4 left-1/2 text-center transform -translate-x-1/2 bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                <motion.div 
+                  className="absolute -bottom-4 left-1/2 text-center transform -translate-x-1/2 bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 150, delay: 0.5 + idx * 0.1 }}
+                >
                   {idx === 0 ? "Founder" : idx === 1 ? "Co-Founder" : "Lead"}
-                </div>
+                </motion.div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">{member.name}</h3>
-              <p className="text-amber-600 font-medium text-md text-center mb-3">{member.role}</p>
-              <p className="text-gray-500 text-center">{member.bio}</p>
+              <motion.h3 
+                className="text-2xl font-bold text-gray-800 mb-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
+              >
+                {member.name}
+              </motion.h3>
+              <motion.p 
+                className="text-amber-600 font-medium text-md text-center mb-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
+              >
+                {member.role}
+              </motion.p>
+              <motion.p 
+                className="text-gray-500 text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+              >
+                {member.bio}
+              </motion.p>
               
-              <div className="mt-6 flex space-x-4">
-                <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s Facebook profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-2
-                00 hover:text-white transition-colors duration-300 text-amber-300">
-                  <Facebook size={18} />
-                </a>
-                <a href={member.social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s Instagram profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-200 hover:text-white transition-colors duration-300 text-amber-500">
-                  <Instagram size={18} />
-                </a>
-                <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${member.name}'s LinkedIn profile`} className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center hover:bg-amber-200 hover:text-white transition-colors duration-300 text-amber-500">
-                  <Linkedin size={18} />
-                </a>
+              <div className="mt-5 flex space-x-3">
+                {Object.entries(member.social).map(([platform, url], sIdx) => (
+                  <motion.a
+                    key={platform}
+                    href={url}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label={`Visit ${member.name}'s ${platform} profile`}
+                    className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-white"
+                    variants={socialIconVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover="hover"
+                    transition={{ delay: 0.7 + idx * 0.1 + sIdx * 0.1 }}
+                  >
+                    {platform === "facebook" ? <Facebook size={16} /> : 
+                     platform === "instagram" ? <Instagram size={16} /> : 
+                     <Linkedin size={16} />}
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
           ))}
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <Button
-            className="bg-amber-500 hover:bg-amber-600 text-white gap-2 px-8 py-3 rounded-full shadow-md text-lg font-semibold"
-          >
-            Join Our Team
-          </Button>
         </motion.div>
       </div>
     </section>
