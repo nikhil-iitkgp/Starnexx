@@ -143,7 +143,7 @@ export function HeroSection() {
                 onClick={() => window.scrollTo(0, 0)}
                 asChild={false}
               >
-                <Link to="/our-work" className="flex items-center gap-2 no-underline text-white">
+                <Link to="/contact" className="flex items-center gap-2 no-underline text-white">
                   Start My Edit
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
