@@ -174,40 +174,41 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover, activeClientId
           ${isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} 
           z-[9999]
           transition-opacity duration-300 ease-in-out
-          bg-white border-2 border-amber-400 rounded-xl p-4 shadow-lg text-center
-          w-max
+          bg-white border border-amber-400 rounded-lg md:rounded-xl p-1.5 sm:p-2 md:p-4 shadow-lg text-center
+          w-[140px] sm:w-[180px] md:w-max
+          max-w-[calc(100vw-2rem)]
         `}
         style={{ 
           position: 'absolute', 
           bottom: isTop ? '100%' : 'auto',
           top: isTop ? 'auto' : '100%',
-          marginBottom: isTop ? '10px' : '0',
-          marginTop: isTop ? '0' : '10px',
+          marginBottom: isTop ? '8px' : '0',
+          marginTop: isTop ? '0' : '8px',
         }}
       >
         {/* Invisible connector */}
         <div 
           className="absolute w-full bg-transparent"
           style={{
-            height: '20px',
-            bottom: isTop ? '-20px' : 'auto',
-            top: isTop ? 'auto' : '-20px',
+            height: '16px',
+            bottom: isTop ? '-16px' : 'auto',
+            top: isTop ? 'auto' : '-16px',
             left: '0',
           }}
         />
-        <h3 className="text-lg font-bold text-gray-900">{client.name}</h3>
+        <h3 className="text-[11px] sm:text-sm md:text-base font-bold text-gray-900 leading-tight">{client.name}</h3>
         {client.designation && (
-          <p className="text-sm text-gray-600 mt-1">{client.designation}</p>
+          <p className="text-[9px] sm:text-xs md:text-sm text-gray-600 mt-0.5 sm:mt-1 leading-tight">{client.designation}</p>
         )}
-        <div className="flex justify-center gap-2 mt-2">
+        <div className="flex justify-center items-center gap-1 sm:gap-2 mt-1 sm:mt-1.5 md:mt-2">
           {client.youtubeUrl && (
-            <a href={client.youtubeUrl} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title={`Visit ${client.name}'s YouTube`} aria-label={`Visit ${client.name}'s YouTube`}>
-              <Youtube className="w-5 h-5 text-amber-500" />
+            <a href={client.youtubeUrl} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform p-0.5 sm:p-1" title={`Visit ${client.name}'s YouTube`} aria-label={`Visit ${client.name}'s YouTube`}>
+              <Youtube className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-amber-500" />
             </a>
           )}
           {client.instagramUrl && (
-            <a href={client.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title={`Visit ${client.name}'s Instagram`} aria-label={`Visit ${client.name}'s Instagram`}>
-              <Instagram className="w-5 h-5 text-amber-500" />
+            <a href={client.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform p-0.5 sm:p-1" title={`Visit ${client.name}'s Instagram`} aria-label={`Visit ${client.name}'s Instagram`}>
+              <Instagram className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-amber-500" />
             </a>
           )}
         </div>
@@ -233,23 +234,18 @@ const InfiniteLogoScroll = ({
   direction: "left" | "right";
   speed?: number;
 }) => {
-  // Track which client is being hovered/active
   const [activeClientId, setActiveClientId] = useState<number | null>(null);
   
   const handleHover = (hovered: boolean, clientId: number) => {
     setActiveClientId(hovered ? clientId : null);
   };
   
-  // Create 10 repetitions of clients to ensure a very long continuous scrolling effect
   const repeatedClients = [];
   for (let i = 0; i < 10; i++) {
     repeatedClients.push(...clients);
   }
   
-  // Animation style class based on direction
   const animationClass = direction === "left" ? "scroll-left" : "scroll-right";
-  
-  // Calculate animation duration based on speed
   const duration = speed;
   
   return (
@@ -281,14 +277,14 @@ export default function ClientLogoGrid() {
   return (
     <section className="relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white opacity-80 z-0"></div>
-      <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-amber-100 opacity-50 blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-amber-200 opacity-40 blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-50 opacity-60 blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white opacity-80 z-0" />
+      <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-amber-100 opacity-50 blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-amber-200 opacity-40 blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-amber-50 opacity-60 blur-3xl" />
       
       {/* Decorative shapes */}
-      <div className="absolute top-20 right-[15%] w-16 h-16 rotate-45 border-2 border-amber-200 opacity-40"></div>
-      <div className="absolute bottom-20 left-[10%] w-12 h-12 rounded-full border-2 border-amber-300 opacity-30"></div>
+      <div className="absolute top-20 right-[15%] w-16 h-16 rotate-45 border-2 border-amber-200 opacity-40" />
+      <div className="absolute bottom-20 left-[10%] w-12 h-12 rounded-full border-2 border-amber-300 opacity-30" />
       
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -306,7 +302,7 @@ export default function ClientLogoGrid() {
               className="text-3xl md:text-4xl font-bold text-gray-900 relative inline-block"
             >
               Our Clients
-              <div className="absolute -bottom-2 left-0 right-0 h-1 mx-auto bg-gradient-to-r from-amber-300 to-amber-500 rounded-full"></div>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 mx-auto bg-gradient-to-r from-amber-300 to-amber-500 rounded-full" />
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0 }}
