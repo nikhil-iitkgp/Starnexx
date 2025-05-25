@@ -1,10 +1,12 @@
 /* cspell:disable */
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination, EffectCards } from "swiper/modules"
+import React, { useState } from "react"
+import type { Swiper as SwiperType } from 'swiper'
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/effect-cards"
-import { Star } from "lucide-react"
+import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 
 const testimonials = [
   {
@@ -61,6 +63,8 @@ const testimonials = [
 ]
 
 export default function TestimonialsCarousel() {
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  
   return (
     <div className="w-full py-16 bg-gradient-to-b from-amber-50/80 to-amber-100/40">
       <div className="container mx-auto px-4">
@@ -74,7 +78,7 @@ export default function TestimonialsCarousel() {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative">
           <Swiper
             modules={[Autoplay, Pagination, EffectCards]}
             effect="cards"
@@ -83,6 +87,7 @@ export default function TestimonialsCarousel() {
               perSlideOffset: 8,
               perSlideRotate: 2,
             }}
+            onSwiper={setSwiper}
             autoplay={{ delay: 8000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             loop
@@ -96,7 +101,7 @@ export default function TestimonialsCarousel() {
                   {/* Gold accent corner */}
                   <div className="absolute top-0 right-0 w-16 h-16 bg-amber-500 transform rotate-45 translate-x-8 -translate-y-8"></div>
                   
-                  <div className="relative z-10 p-8 md:p-10">
+                  <div className="relative z-10 px-8 py-8 md:px-16 md:py-10">
                     {/* Five stars */}
                     <div className="flex mb-4 text-amber-500">
                       <Star className="w-5 h-5 fill-current" />
@@ -118,6 +123,25 @@ export default function TestimonialsCarousel() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Navigation buttons in a separate layer above everything */}
+          <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none" style={{ zIndex: 1000000 }}>
+            <button 
+              onClick={() => swiper?.slidePrev()}
+              className="pointer-events-auto absolute left-1 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-16 h-16 text-amber-600 hover:text-amber-700 transition-colors"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-14 h-14 stroke-[3]" strokeLinecap="round" strokeLinejoin="round" />
+            </button>
+            
+            <button 
+              onClick={() => swiper?.slideNext()}
+              className="pointer-events-auto absolute right-1 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-16 h-16 text-amber-600 hover:text-amber-700 transition-colors"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-14 h-14 stroke-[3]" strokeLinecap="round" strokeLinejoin="round" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
