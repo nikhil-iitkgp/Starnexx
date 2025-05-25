@@ -1,7 +1,7 @@
 /* cspell:disable */
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination, EffectCards } from "swiper/modules"
-import React, { useState } from "react"
+import { useState } from "react"
 import type { Swiper as SwiperType } from 'swiper'
 import "swiper/css"
 import "swiper/css/pagination"
