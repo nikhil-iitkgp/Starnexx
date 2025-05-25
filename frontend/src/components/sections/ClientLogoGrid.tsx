@@ -1,6 +1,6 @@
 /* cspell:disable */
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Youtube, Instagram } from "lucide-react";
 import '../../styles/client-logo-grid.css';
 
@@ -128,29 +128,73 @@ const secondRowClients = clientData.slice(7, 14);
 interface ClientLogoProps {
   client: typeof clientData[0];
   index: number;
-  onHover: (hovered: boolean) => void;
+  onHover: (hovered: boolean, clientId: number) => void;
+  activeClientId: number | null;
 }
 
-const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover }) => {
+const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover, activeClientId }) => {
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isActive = activeClientId === client.id;
+  const isTop = client.id <= 7;
+
+  // Handle outside clicks for mobile
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node) &&
+          containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        onHover(false, -1);
+      }
+    };
+
+    if (isActive) {
+      document.addEventListener('mousedown', handleClickOutside as EventListener);
+      document.addEventListener('touchstart', handleClickOutside as EventListener);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside as EventListener);
+      document.removeEventListener('touchstart', handleClickOutside as EventListener);
+    };
+  }, [isActive, onHover]);
+
   return (
     <div 
-      className="flex-shrink-0 relative client-logo-container group z-1"
-      onMouseEnter={() => onHover(true)}
-      onMouseLeave={() => onHover(false)}
+      ref={containerRef}
+      className={`flex-shrink-0 relative client-logo-container z-1 ${isActive ? 'z-20' : 'z-10'}`}
+      onMouseEnter={() => onHover(true, client.id)}
+      onMouseLeave={() => onHover(false, client.id)}
       style={{ position: 'relative' }}
     >
-      {/* Tooltip */}
+      {/* Tooltip with connector */}
       <div
+        ref={tooltipRef}
         className={`
           absolute left-1/2 -translate-x-1/2
-          opacity-0 pointer-events-none z-[9999]
-          group-hover:opacity-100 group-hover:pointer-events-auto group-hover:z-[9999]
-          transition-all duration-200
+          ${isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} 
+          z-[9999]
+          transition-opacity duration-300 ease-in-out
           bg-white border-2 border-amber-400 rounded-xl p-4 shadow-lg text-center
-          ${client.id <= 7 ? 'tooltip-top' : 'tooltip-bottom'}
+          w-max
         `}
-        style={{ position: 'absolute' }}
+        style={{ 
+          position: 'absolute', 
+          bottom: isTop ? '100%' : 'auto',
+          top: isTop ? 'auto' : '100%',
+          marginBottom: isTop ? '10px' : '0',
+          marginTop: isTop ? '0' : '10px',
+        }}
       >
+        {/* Invisible connector */}
+        <div 
+          className="absolute w-full bg-transparent"
+          style={{
+            height: '20px',
+            bottom: isTop ? '-20px' : 'auto',
+            top: isTop ? 'auto' : '-20px',
+            left: '0',
+          }}
+        />
         <h3 className="text-lg font-bold text-gray-900">{client.name}</h3>
         {client.designation && (
           <p className="text-sm text-gray-600 mt-1">{client.designation}</p>
@@ -169,7 +213,7 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover }) => {
         </div>
       </div>
       {/* Logo */}
-      <div className="h-28 w-28 md:h-40 md:w-40 lg:h-44 lg:w-44 rounded-full bg-white shadow-md flex items-center justify-center p-5 overflow-visible border-2 border-amber-100 hover:shadow-lg hover:border-amber-300 transition-all duration-300 relative">
+      <div className={`h-28 w-28 md:h-40 md:w-40 lg:h-44 lg:w-44 rounded-full bg-white shadow-md flex items-center justify-center p-5 overflow-visible border-2 ${isActive ? 'border-amber-400' : 'border-amber-100'} hover:shadow-lg hover:border-amber-300 transition-all duration-300 relative`}>
         <img
           src={client.imageUrl}
           alt={client.name}
@@ -189,8 +233,12 @@ const InfiniteLogoScroll = ({
   direction: "left" | "right";
   speed?: number;
 }) => {
-  // State to track if any logo is being hovered
-  const [isPaused, setIsPaused] = useState(false);
+  // Track which client is being hovered/active
+  const [activeClientId, setActiveClientId] = useState<number | null>(null);
+  
+  const handleHover = (hovered: boolean, clientId: number) => {
+    setActiveClientId(hovered ? clientId : null);
+  };
   
   // Create 10 repetitions of clients to ensure a very long continuous scrolling effect
   const repeatedClients = [];
@@ -201,18 +249,18 @@ const InfiniteLogoScroll = ({
   // Animation style class based on direction
   const animationClass = direction === "left" ? "scroll-left" : "scroll-right";
   
-  // Calculate animation duration based on number of clients
-  // The more clients, the longer the animation should take to maintain consistent speed
-  const duration = speed ; // Animation takes 10x the base speed to complete a full cycle
+  // Calculate animation duration based on speed
+  const duration = speed;
   
   return (
     <div className="relative w-full overflow-visible py-8" style={{ isolation: 'isolate' }}>
       <div 
-        className={`flex gap-6 sm:gap-12 md:gap-16 ${animationClass} ${isPaused ? 'paused' : ''}`}
+        className={`flex gap-6 sm:gap-12 md:gap-16 ${animationClass} ${activeClientId !== null ? 'paused' : ''}`}
         style={{ 
           ['--animation-duration' as any]: `${duration}s`,
           position: 'relative',
-          zIndex: 1
+          zIndex: 1,
+          transition: 'animation-play-state 0.3s ease'
         }}
       >
         {repeatedClients.map((client, index) => (
@@ -220,7 +268,8 @@ const InfiniteLogoScroll = ({
             key={`${client.id}-${index}`} 
             client={client} 
             index={index}
-            onHover={setIsPaused}
+            onHover={handleHover}
+            activeClientId={activeClientId}
           />
         ))}
       </div>
