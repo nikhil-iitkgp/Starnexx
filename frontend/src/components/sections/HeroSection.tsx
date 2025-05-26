@@ -26,13 +26,6 @@ export function HeroSection() {
   const loopRef = useRef<any>(null);
 
   // Function to open Calendly directly in a new tab
-  const openCalendlyPopup = () => {
-    // Direct URL approach - more reliable than the widget
-    window.open(
-      "https://calendly.com/creatorhub-edits/how-you-can-improve-your-online-presence?",
-      "_blank"
-    );
-  };
 
   // Add Calendly script on component mount
   useEffect(() => {
