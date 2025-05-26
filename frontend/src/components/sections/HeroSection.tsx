@@ -173,20 +173,19 @@ export function HeroSection() {
               </Button>
             </motion.div>
             
-            <motion.div
-              variants={buttonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
+            {/* Mobile-friendly implementation */}
+            <Button
+              variant="outline"
+              className="border-2 border-amber-500 text-amber-600 bg-white/90 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-600 rounded-full px-8 py-3 text-base font-semibold transition-all shadow-md scale-100 hover:scale-105 active:scale-95 duration-200 book-call-btn"
+              onClick={() => {
+                window.open(
+                  "https://calendly.com/creatorhub-edits/how-you-can-improve-your-online-presence?",
+                  "_blank"
+                );
+              }}
             >
-              <Button
-                variant="outline"
-                className="border-2 border-amber-500 text-amber-600 bg-white/90 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-600 rounded-full px-8 py-3 text-base font-semibold transition-all shadow-md scale-100 hover:scale-105 active:scale-95 duration-200 book-call-btn"
-                onClick={openCalendlyPopup}
-              >
-                Book A Call
-              </Button>
-            </motion.div>
+              Book A Call
+            </Button>
           </div>
         </div>
         
@@ -231,19 +230,19 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute left-0 top-1/4 w-36 h-36 bg-gradient-to-r from-amber-300/30 to-amber-500/20 rounded-full blur-3xl"
+        className="absolute left-0 top-1/4 w-36 h-36 bg-gradient-to-r from-amber-300/30 to-amber-500/20 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.7 }}
-        className="absolute right-0 bottom-1/4 w-48 h-48 bg-gradient-to-r from-amber-400/20 to-amber-300/30 rounded-full blur-3xl"
+        className="absolute right-0 bottom-1/4 w-48 h-48 bg-gradient-to-r from-amber-400/20 to-amber-300/30 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.9 }}
-        className="absolute left-1/4 bottom-0 w-24 h-24 bg-gradient-to-br from-amber-200/20 to-amber-300/10 rounded-full blur-3xl"
+        className="absolute left-1/4 bottom-0 w-24 h-24 bg-gradient-to-br from-amber-200/20 to-amber-300/10 rounded-full blur-3xl pointer-events-none"
       />
       <style>{`.animate-blink { animation: blink-cursor 1.2s steps(1) infinite; } @keyframes blink-cursor { 0%,100%{opacity:1;} 50%{opacity:0;} }`}</style>
     </section>
