@@ -125,7 +125,7 @@ export default function TestimonialsCarousel() {
           </Swiper>
 
           {/* Navigation buttons in a separate layer above everything */}
-          <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none" style={{ zIndex: 1000000 }}>
+          <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none" style={{ zIndex: 40 }}>
             <button 
               onClick={() => swiper?.slidePrev()}
               className="pointer-events-auto absolute left-1 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-16 h-16 text-amber-600 hover:text-amber-700 transition-colors"

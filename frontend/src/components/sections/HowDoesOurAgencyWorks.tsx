@@ -139,13 +139,13 @@ export default function HowDoesOurAgencyWorks() {
           animate="visible"
           variants={titleVariants}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             How Does Our Agency Work?
-          </h2>
+          </h3>
           <motion.div 
-            className="h-1 bg-amber-500 w-1/3 mx-auto mb-6 rounded-full"
+            className="h-1 bg-amber-500 w-10/11 mx-auto mb-6 rounded-full"
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: "33%", opacity: 1 }}
+            animate={{ width: "67%", opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           ></motion.div>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
