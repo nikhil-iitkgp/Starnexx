@@ -113,7 +113,7 @@ export default function ContactForm() {
         placeholder="Your question or comment"
         required
         rows={5}
-        className="w-full border-2 border-amber-100 focus:border-amber-400 bg-white/80 text-gray-900 placeholder:text-amber-400/70 rounded-xl px-5 py-4 focus:ring-2 focus:ring-amber-200 transition-all text-lg shadow-sm text-lg"
+        className="w-full border-2 border-amber-100 focus:border-amber-400 bg-white/80 text-gray-900 placeholder:text-amber-400/70 rounded-xl px-5 py-4 focus:ring-2 focus:ring-amber-200 transition-all text-lg shadow-sm"
       />
       <div className="w-full flex justify-center mt-2 relative z-10">
         <Button
