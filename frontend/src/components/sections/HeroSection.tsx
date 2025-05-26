@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 
+// Add Calendly type declarations
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
+
 const roles = ["Youtubers", "Podcasters", "Businesses", "Realtors", "Creators"];
 
 export function HeroSection() {
@@ -16,12 +25,31 @@ export function HeroSection() {
   const pauseTime = 1000;
   const loopRef = useRef<any>(null);
 
+  // Function to open Calendly directly in a new tab
+  const openCalendlyPopup = () => {
+    // Direct URL approach - more reliable than the widget
+    window.open(
+      "https://calendly.com/creatorhub-edits/how-you-can-improve-your-online-presence?",
+      "_blank"
+    );
+  };
+
   // Add Calendly script on component mount
   useEffect(() => {
     // Create a new script element
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
+    
+    // Add window.Calendly type declaration
+    if (!window.Calendly) {
+      window.Calendly = {
+        initPopupWidget: (options: { url: string }) => {
+          window.open(options.url, '_blank');
+        }
+      };
+    }
+    
     script.onload = () => {
       console.log('Calendly script loaded successfully in HeroSection');
     };
@@ -80,11 +108,6 @@ export function HeroSection() {
       setDisplayed(roles[index]);
     }
   }, [index, deleting]);
-
-  // Function to open Calendly directly in a new tab
-  const openCalendlyPopup = () => {
-    window.open('https://calendly.com/creatorhub-edits/how-you-can-improve-your-online-presence?', '_blank');
-  };
 
   // Animation variants for buttons
   const buttonVariants = {
