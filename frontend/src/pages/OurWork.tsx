@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid"
 import FinalCTA from "@/components/sections/FinalCTA"
+import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
 
 import { longformVideos } from "@/data/longformVideoData"
 import { shortformVideos } from "@/data/shortformVideoData"
@@ -102,6 +103,24 @@ export default function OurWork() {
       </motion.section>
 
       <SectionDivider />
+
+      {/* Testimonials */}
+            <motion.section
+              className="py-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={sectionVariants}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-gradient-to-r from-[#FFF8E1] via-[#FFFAF0] to-white border border-amber-200 rounded-3xl p-8 md:p-12 shadow-md">
+                  <TestimonialsCarousel />
+                </div>
+              </div>
+            </motion.section>
+      
+            <SectionDivider />
 
       {/* Final Call to Action */}
       <motion.section 

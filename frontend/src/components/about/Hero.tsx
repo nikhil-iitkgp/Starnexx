@@ -20,7 +20,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Experts in video editing, marketing, and client success dedicated to taking your content to the next level
+            Experts in video editing, marketing, and client success dedicated to taking your content to the next level!
           </motion.p>
         </div>
       </div>

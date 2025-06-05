@@ -15,7 +15,7 @@ const team = [
   },
   {
     name: "Sayantan Saha",
-    role: "Marketing | Ads | Social Media",
+    role: "Marketing | Ads | Social Media Management",
     img: "/Team/Sayantan.jpg",
     bio: "Strategist focused on building brand presence and engagement.",
     social: {
@@ -91,7 +91,7 @@ export default function Team() {
           variants={headingVariants}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">Our Team</h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-4">Meet the Minds Behind Starnexx</h2>
           <motion.div 
             className="w-1/2 h-1 bg-gradient-to-r from-amber-400 to-amber-200 mx-auto mb-6 rounded-full"
             initial={{ width: 0, opacity: 0 }}
@@ -100,7 +100,7 @@ export default function Team() {
             viewport={{ once: true }}
           ></motion.div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Meet the talented professionals behind our success. Expertise, creativity, and dedication drive everything we do.
+            A passionate team of experts driving your brand’s growth with creativity, precision, and unwavering dedication.
           </p>
         </motion.div>
         
@@ -152,7 +152,7 @@ export default function Team() {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ type: "spring", stiffness: 150, delay: 0.5 + idx * 0.1 }}
                     >
-                      {idx === 0 ? "Founder" : idx === 1 ? "Co-Founder" : "Lead"}
+                      {idx === 0 ? "Founder" : idx === 1 ? "Founder" : "Web-Head"}
                     </motion.div>
                   </div>
 

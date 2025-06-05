@@ -62,7 +62,7 @@ export default function FinalCTA() {
           >
             <div className="text-center max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Elevate Your Content with Professional Editing
+                Ready to Take Your Instagram and YouTube Content to the Next Level?
               </h2>
               <p className="text-lg text-gray-600">
                 Take your videos to the next level with our premium editing
@@ -80,7 +80,7 @@ export default function FinalCTA() {
                   className="bg-white border-2 border-amber-500 text-amber-600 hover:bg-amber-50 transition-all duration-300 text-lg px-8 py-6 h-auto rounded-full shadow-lg font-semibold flex items-center gap-2"
                   onClick={openCalendlyPopup}
                 >
-                  Book a Discovery Call <Calendar className="w-5 h-5" />
+                  Schedule a Strategy Call <Calendar className="w-5 h-5" />
                 </Button>
               </div>
             </div>
