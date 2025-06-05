@@ -88,7 +88,7 @@ export default function TestimonialsCarousel() {
               perSlideRotate: 2,
             }}
             onSwiper={setSwiper}
-            autoplay={{ delay: 8000, disableOnInteraction: false }}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             loop
             slidesPerView={1}

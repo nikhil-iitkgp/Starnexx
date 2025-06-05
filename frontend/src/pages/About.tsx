@@ -117,7 +117,7 @@ export default function About() {
 
       <SectionDivider />
 
-      {/* Who We Help */}
+      {/* Who We Help
       <motion.section
         className="py-16"
         initial="hidden"
@@ -131,7 +131,7 @@ export default function About() {
 
       <SectionDivider />
 
-      {/* Testimonials */}
+      Testimonials 
       <motion.section
         className="py-16"
         initial="hidden"
@@ -147,7 +147,7 @@ export default function About() {
         </div>
       </motion.section>
 
-      <SectionDivider />
+      <SectionDivider /> */}
 
       {/* Final CTA */}
       <motion.section

@@ -160,7 +160,7 @@ export function HeroSection() {
                 asChild={false}
               >
                 <Link to="/contact" className="flex items-center gap-2 no-underline text-white">
-                  Start My Edit
+                  Get Started
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
@@ -177,7 +177,7 @@ export function HeroSection() {
                 );
               }}
             >
-              Book A Call
+              Schedule a Free Strategy Call
             </Button>
           </div>
         </div>

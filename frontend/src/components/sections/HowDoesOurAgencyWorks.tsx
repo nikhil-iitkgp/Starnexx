@@ -1,10 +1,11 @@
 import { User, FileText, CheckCircle, MessageSquare } from "lucide-react";
 import { motion, useAnimation } from "framer-motion"
 import { useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const steps = [
   {
-    icon: <FileText className="w-10 h-10 text-amber-500" />, 
+    icon: (<Link to="/contact" onClick={() => window.scrollTo(0, 0)} ><FileText className="w-10 h-10 text-amber-500" /></Link>),
     title: "Fill Our Contact Us Form",
     description: "Step 1",
   },
