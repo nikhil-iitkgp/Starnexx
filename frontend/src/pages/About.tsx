@@ -3,8 +3,6 @@ import Hero from "@/components/about/Hero"
 import OurStory from "@/components/about/OurStory"
 import Team from "@/components/about/Team"
 import WhyChooseUs from "@/components/about/WhyChooseUs"
-import WhoWeHelp from "@/components/sections/WhoWeHelp"
-import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
 import FinalCTA from "@/components/sections/FinalCTA"
 
 // Animation variants for consistent animations

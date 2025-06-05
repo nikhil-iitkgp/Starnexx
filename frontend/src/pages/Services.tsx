@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import ComprehensiveServices from "@/components/sections/ComprehensiveServices"
 import WhoWeHelp from "@/components/sections/WhoWeHelp"
-import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
 import FinalCTA from "@/components/sections/FinalCTA"
 import FAQSection from "@/components/sections/FAQSection"
 import { serviceFAQs } from "@/data/faqData"

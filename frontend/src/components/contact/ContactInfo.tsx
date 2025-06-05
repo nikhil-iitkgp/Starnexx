@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Clock, Globe, Instagram, Facebook } from "lucide-react"
+import { Mail, Phone, Instagram } from "lucide-react"
 
 export default function ContactInfo() {
   const contactDetails = [

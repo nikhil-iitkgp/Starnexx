@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import ClientLogoGrid from "@/components/sections/ClientLogoGrid"
 import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel"
-import WhoWeHelp from "@/components/sections/WhoWeHelp"
 import FinalCTA from "@/components/sections/FinalCTA"
 
 // Animation variants for consistent animations
