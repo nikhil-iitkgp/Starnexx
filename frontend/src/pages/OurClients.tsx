@@ -81,7 +81,7 @@ export default function OurClients() {
 
       <SectionDivider />
 
-      {/* Who We Help */}
+      {/* Who We Help
       <motion.section
         className="py-16"
         initial="hidden"
@@ -93,7 +93,7 @@ export default function OurClients() {
         <WhoWeHelp />
       </motion.section>
 
-      <SectionDivider />
+      <SectionDivider /> */}
 
       {/* Final CTA */}
       <motion.section

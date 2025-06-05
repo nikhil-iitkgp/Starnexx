@@ -68,8 +68,8 @@ export default function ContactForm() {
           <Mail className="w-7 h-7" />
         </span>
         <div>
-          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Let's Connect</h2>
-          <p className="text-gray-600 text-base">Fill out the form below and we'll get back to you within 24 hours.</p>
+          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Let's Connect!</h2>
+          {/* <p className="text-gray-600 text-base">Fill out the form below and we'll get back to you within 24 hours.</p> */}
         </div>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">

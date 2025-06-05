@@ -18,23 +18,23 @@ const benefits = [
     gradient: "from-amber-300/20 via-amber-200/10 to-amber-100/5"
   },
   {
-    title: "First Draft in 1-2 Business Days",
+    title: "Delivered in Just 1-2 Business Days",
     description:
       "Keep your projects moving forward and reliably hit deadlines.",
     icon: <Clock className="w-8 h-8" />,
     gradient: "from-amber-200/20 via-amber-300/10 to-amber-400/5"
   },
   {
-    title: "Licensed Music & Stock Footage",
+    title: "5× Faster Audience Growth",
     description:
-      "Forget about copyright claims or sourcing the right music, SFX, and stock.",
+      "With content crafted to target the right viewers-every time.",
     icon: <Music className="w-8 h-8" />,
     gradient: "from-amber-400/20 via-amber-200/10 to-amber-300/5"
   },
   {
-    title: "Transparent Pricing",
+    title: "98% Client Retention Rate",
     description:
-      "Stay on budget with our transparent pricing and cost-effective solutions—quality without compromise.",
+      "Because we don’t just deliver—we build long-term brand success.",
     icon: <BadgeDollarSign className="w-8 h-8" />,
     gradient: "from-amber-300/20 via-amber-400/10 to-amber-200/5"
   },
@@ -147,7 +147,7 @@ export default function BenefitsOfStarnexx() {
             animate="visible"
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-2"
           >
-            Benefits of Starnexx
+            Why Choose Starnexx?
           </motion.h2>
           <motion.div 
             className="h-1 bg-gradient-to-r from-amber-400 to-amber-500 w-1/3 mx-auto mt-3 rounded-full mb-4"
@@ -161,7 +161,8 @@ export default function BenefitsOfStarnexx() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Experience the advantages of working with a dedicated team committed to your success
+            Growth isn’t a chance—it’s a choice. 
+            We blend creativity, strategy, and data to push your brand beyond limits.
           </motion.p>
         </div>
         

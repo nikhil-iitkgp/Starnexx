@@ -59,8 +59,8 @@ export default function Services() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600">
-              Professional video editing services tailored to your needs. Fast turnaround times
-              and dedicated support.
+              Transform your footage into captivating videos that engage, inspire, and convert.
+From raw clips to polished content, our expert editors bring your vision to life—perfectly tailored for social media, YouTube, and beyond.
             </p>
           </motion.div>
         </div>
@@ -96,7 +96,7 @@ export default function Services() {
 
       <SectionDivider />
 
-      {/* Testimonials */}
+      {/* Testimonials
       <motion.section 
         className="py-16"
         initial="hidden"
@@ -108,7 +108,7 @@ export default function Services() {
         <TestimonialsCarousel />
       </motion.section>
 
-      <SectionDivider />
+      <SectionDivider /> */}
 
       {/* Final CTA */}
       <motion.section 

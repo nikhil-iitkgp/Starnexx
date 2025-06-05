@@ -297,9 +297,9 @@ export default function PortfolioHighlights() {
           icon={<ImageIcon size={24} strokeWidth={2} className="text-amber-500" />}
           renderItem={(thumbnail, index) => <ThumbnailCard key={index} {...thumbnail} />}
         />
-        
+      </div>
         {/* View Full Portfolio Button */}
-        <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+        {/* <div className="mt-12 sm:mt-16 md:mt-20 text-center">
           <Link to="/our-work">
             <Button
               className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white gap-2 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full shadow-xl text-base sm:text-lg font-bold scale-100 hover:scale-105 active:scale-95 duration-200 border-none"
@@ -307,8 +307,7 @@ export default function PortfolioHighlights() {
               View Full Portfolio <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-        </div>
-      </div>
+        </div> */}
     </section>
   )
 }

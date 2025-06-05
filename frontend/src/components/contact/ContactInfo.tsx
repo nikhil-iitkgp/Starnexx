@@ -1,33 +1,36 @@
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Clock, Globe } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Globe, Instagram, Facebook } from "lucide-react"
 
 export default function ContactInfo() {
   const contactDetails = [
     {
       icon: <Mail className="w-6 h-6 text-amber-500" />,
       title: "Email Us",
-      details: "contact@starnexx.com"
+      details: "contact@starnexx.in"
     },
     {
       icon: <Phone className="w-6 h-6 text-amber-500" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567"
+      details: "+91 8317864154"
     },
-    {
-      icon: <MapPin className="w-6 h-6 text-amber-500" />,
-      title: "Visit Us",
-      details: "123 Video Street, Edit City, ST 12345"
-    },
+    // {
+    //   icon: <MapPin className="w-6 h-6 text-amber-500" />,
+    //   title: "Visit Us",
+    //   details: "IIT Kharagpur"
+    // },
+    /*
     {
       icon: <Clock className="w-6 h-6 text-amber-500" />,
       title: "Business Hours",
       details: "Monday - Friday: 9am - 6pm EST"
     },
+    */
     {
-      icon: <Globe className="w-6 h-6 text-amber-500" />,
-      title: "Social Media",
-      details: "@starnexx_official"
-    }
+      icon: <Instagram className="w-6 h-6 text-amber-500" />,
+      title: "Instagram",
+      details: "@starnexx.in"
+    },
+    
   ]
 
   return (
@@ -35,7 +38,7 @@ export default function ContactInfo() {
       <div className="space-y-6">
         <h2 className="text-3xl font-bold text-gray-900">Contact Information</h2>
         <p className="text-gray-600">
-          Reach out to us directly through any of these channels or visit our office during business hours.
+          Reach out to us directly through any of these channels!
         </p>
       </div>
 

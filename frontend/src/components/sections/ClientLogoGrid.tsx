@@ -10,7 +10,7 @@ const clientData = [
     id: 1,
     name: "Rajeev Bhatia",
     imageUrl: "/clients/img 1-Rajeev Bhatia.jpg",
-    youtubeUrl: "https://www.youtube.com/@RajeevBhatiaCoach",
+    youtubeUrl: "https://www.youtube.com/@Rajeev.BhatiaCoach",
     instagramUrl: "https://www.instagram.com/rajeev.bhatia.coach/",
     designation: "Business Coach | Entrepreneur"
   },
@@ -18,8 +18,8 @@ const clientData = [
     id: 2,
     name: "Anushkaa Singh",
     imageUrl: "/clients/img -2 - Anushkaa Singh.jpg",
-    youtubeUrl: "https://www.youtube.com/@shreeoocultchronicles",
-    instagramUrl: "https://www.instagram.com/vastubyanushkaa/",
+    youtubeUrl: "https://www.youtube.com/@ShreeOccultChronicles",
+    instagramUrl: "",
     designation: "Professional Vedic Astrologer"
   },
   {
@@ -74,7 +74,7 @@ const clientData = [
     id: 9,
     name: "Rishi Arora",
     imageUrl: "/clients/img 9 rishi arora.jpg",
-    youtubeUrl: "https://www.youtube.com/channel/UCNSeoYRFsWB8zdlhZxl_XaA",
+    youtubeUrl: "https://www.youtube.com/@rishiireborn",
     instagramUrl: "",
     designation: "Growth and Transformation"
   },
@@ -310,7 +310,7 @@ export default function ClientLogoGrid() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mt-4 text-lg text-gray-600"
             >
-              Proud to work with amazing brands
+              Proud to work with amazing clients!
             </motion.p>
           </div>
 
