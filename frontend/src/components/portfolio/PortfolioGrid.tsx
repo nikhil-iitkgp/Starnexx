@@ -59,24 +59,27 @@ export default function PortfolioGrid({
           defaultValue={initialTab}
           value={activeTab}
           onValueChange={(value) => setActiveTab(value as any)}
-          className="mb-8"
+          className="mb-12"
         >
-          <TabsList className="mx-auto bg-amber-50 border border-amber-100 p-1 flex flex-col gap-2 sm:flex-row sm:gap-0 w-full sm:w-auto">
+          <TabsList className="mx-auto bg-amber-50 border border-amber-200  flex flex-col md:flex-row gap-2 w-full max-w-3xl">
             <TabsTrigger 
               value="longform"
-              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'longform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
+              style={{ fontSize: 'clamp(1.25rem, 2vw, 1rem)' }}
+              className={`flex-1 w-full py-0.5 px-4 md:px-6 font-extrabold rounded-md shadow-sm transition-colors duration-200 ${activeTab === 'longform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Longform
             </TabsTrigger>
             <TabsTrigger 
               value="shortform"
-              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'shortform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
+              style={{ fontSize: 'clamp(1.25rem, 2vw, 1rem)' }}
+              className={`flex-1 w-full py-0.5 px-4 md:px-6 font-extrabold rounded-md shadow-sm transition-colors duration-200 ${activeTab === 'shortform' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Shortform
             </TabsTrigger>
             <TabsTrigger 
               value="thumbnail"
-              className={`sm:flex-1 w-full sm:w-auto ${activeTab === 'thumbnail' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
+              style={{ fontSize: 'clamp(1.25rem, 2vw, 1rem)' }}
+              className={`flex-1 w-full py-0.5 px-4 md:px-6 font-extrabold rounded-md shadow-sm transition-colors duration-200 ${activeTab === 'thumbnail' ? 'bg-amber-500 text-white' : 'text-amber-700 hover:bg-amber-100'}`}
             >
               Thumbnails
             </TabsTrigger>
