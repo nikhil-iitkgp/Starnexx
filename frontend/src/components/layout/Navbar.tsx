@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
-import logo from "../../assets/StarnexLogo.png";
+import logo from "../../assets/name-black-05.png";
 
 const navLinks = [
   { name: "Home", to: "/" },

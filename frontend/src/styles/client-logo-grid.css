@@ -17,12 +17,22 @@
 }
 
 .scroll-left {
+  /* animation: scrollLeft var(--animation-duration, 30s) linear infinite;
+  width: max-content;
+  overflow: visible !important; */
+  animation-play-state: running;
+  transition: animation-play-state 0.3s ease-in-out; /* ✅ ADD THIS LINE */
   animation: scrollLeft var(--animation-duration, 30s) linear infinite;
   width: max-content;
   overflow: visible !important;
 }
 
 .scroll-right {
+  /* animation: scrollRight var(--animation-duration, 30s) linear infinite;
+  width: max-content;
+  overflow: visible !important; */
+  animation-play-state: running;
+  transition: animation-play-state 0.3s ease-in-out; /* ✅ ADD THIS LINE */
   animation: scrollRight var(--animation-duration, 30s) linear infinite;
   width: max-content;
   overflow: visible !important;

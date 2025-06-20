@@ -21,10 +21,10 @@ const SectionDivider = () => (
 );
 
 const stats = [
-  { value: "500+", label: "Projects Completed" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "24h", label: "Average Turnaround" },
-  { value: "50+", label: "Active Clients" }
+  { value: "10 M+", label: "Views Generated" },
+  { value: "50+", label: "Satisfied Clients" },
+  { value: "100+", label: "Projects Completed" },
+  { value: "98%", label: "Client Satisfaction" }
 ]
 
 export default function About() {
