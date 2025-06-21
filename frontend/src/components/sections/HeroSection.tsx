@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Add Calendly type declarations
 declare global {
@@ -20,7 +20,7 @@ export function HeroSection() {
   const [displayed, setDisplayed] = useState(roles[0].slice(0, 1));
   const [deleting, setDeleting] = useState(false);
   const [charIdx, setCharIdx] = useState(1);
-  const [isHovering, setIsHovering] = useState(false);
+  const [, setIsHovering] = useState(false);
   const typingSpeed = 50;
   const pauseTime = 1000;
   const loopRef = useRef<any>(null);
