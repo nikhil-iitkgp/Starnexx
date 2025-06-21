@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Instagram, ExternalLink } from 'lucide-react';
+import { Play, Instagram, ExternalLink, Volume2, VolumeX } from 'lucide-react';
 
 export interface ShortformVideoProps {
   videoUrl: string;  // Local path to video file
@@ -14,23 +14,22 @@ export default function ShortformVideoCard({
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Generate thumbnail from video on mount
+  // Generate thumbnail
   useEffect(() => {
     const video = document.createElement('video');
     video.crossOrigin = 'anonymous';
     video.src = videoUrl;
-    
-    // Once metadata is loaded, seek to 0.1 seconds and capture thumbnail
+
     video.addEventListener('loadedmetadata', () => {
       video.currentTime = 0.1;
     });
-    
-    // When the frame at 0.1 seconds is available, capture it
+
     video.addEventListener('seeked', () => {
       const canvas = canvasRef.current;
       if (canvas) {
@@ -44,26 +43,24 @@ export default function ShortformVideoCard({
         }
       }
     });
-    
-    // Handle loading errors
+
     video.addEventListener('error', () => {
       console.error('Error loading video for thumbnail extraction');
       setThumbnailUrl('/shortformvideos/default-thumb.jpg');
     });
-    
+
     video.load();
-    
+
     return () => {
-      // Cleanup
       video.removeAttribute('src');
       video.load();
     };
   }, [videoUrl]);
 
-  // Set up IntersectionObserver to detect when the video is visible
+  // Observe visibility
   useEffect(() => {
     if (!containerRef.current) return;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -72,31 +69,30 @@ export default function ShortformVideoCard({
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.3, // Reduced threshold to start playing sooner when scrolling
+        threshold: 0.3,
       }
     );
-    
+
     observer.observe(containerRef.current);
-    
+
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
       }
     };
   }, []);
-  
-  // Autoplay video when it becomes visible
+
+  // Autoplay when visible
   useEffect(() => {
     if (isVisible && videoRef.current && !isPlaying) {
-      // Add a small delay to stagger the videos starting
       const timeoutId = setTimeout(() => {
         videoRef.current?.play().then(() => {
           setIsPlaying(true);
         }).catch(err => {
           console.error("Error playing video:", err);
         });
-      }, Math.random() * 500); // Random delay up to 500ms
-      
+      }, Math.random() * 500);
+
       return () => clearTimeout(timeoutId);
     } else if (!isVisible && videoRef.current && isPlaying) {
       videoRef.current.pause();
@@ -104,7 +100,6 @@ export default function ShortformVideoCard({
     }
   }, [isVisible, isPlaying]);
 
-  // Handle video click
   const handleClick = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -118,7 +113,6 @@ export default function ShortformVideoCard({
     }
   };
 
-  // Handle opening original source
   const handleSourceClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (originalSource) {
@@ -126,48 +120,52 @@ export default function ShortformVideoCard({
     }
   };
 
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsMuted(prev => {
+      const newMuted = !prev;
+      if (videoRef.current) {
+        videoRef.current.muted = newMuted;
+      }
+      return newMuted;
+    });
+  };
+
   return (
     <>
-      {/* Hidden canvas for thumbnail generation */}
-      <canvas ref={canvasRef} className="hide" />
-      
+      <canvas ref={canvasRef} className="hidden" />
+
       <motion.div
         ref={containerRef}
         whileHover={{ y: -5 }}
         transition={{ duration: 0.3 }}
         className="relative overflow-hidden rounded-xl aspect-[9/16] min-w-[180px] sm:min-w-[220px] md:min-w-[240px] max-w-[280px] mx-auto mb-4 sm:mb-6"
-        style={{ 
-          background: 'transparent', 
-          boxShadow: 'none', 
-          border: 'none',
-          backgroundColor: 'transparent'
-        }}
+        style={{ backgroundColor: 'transparent' }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
       >
-        {/* Video element */}
         <video
           ref={videoRef}
           src={videoUrl}
           poster={thumbnailUrl || undefined}
-          muted
+          muted={isMuted}
           playsInline
           loop
-          className="w-full h-full object-cover rounded-xl portrait-aspect"
+          className="w-full h-full object-cover rounded-xl"
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           preload="metadata"
         />
-        
-        {/* Play/pause overlay */}
+
+        {/* Overlay when paused */}
         {!isPlaying && (
           <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-80'}`}>
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-500 flex items-center justify-center">
               <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="white" />
             </div>
-            
-            {/* Instagram badge */}
+
+            {/* Instagram Icon */}
             {originalSource && (
               <div 
                 className="absolute bottom-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
@@ -176,23 +174,51 @@ export default function ShortformVideoCard({
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-pink-600" />
               </div>
             )}
+
+            {/* Mute Button */}
+            <div
+              className="absolute bottom-3 left-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
+              onClick={toggleMute}
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              {isMuted ? (
+                <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+              ) : (
+                <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+              )}  
+            </div>
           </div>
         )}
-        
-        {/* Pause indicator when playing */}
+
+        {/* Overlay when playing */}
         {isPlaying && (
-          <div className="absolute bottom-3 right-3 flex gap-2">
-            {originalSource && (
-              <div 
-                className="bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
-                onClick={handleSourceClick}
-              >
-                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
-              </div>
-            )}
-          </div>
+          <>
+            <div className="absolute bottom-3 right-3 flex gap-2">
+              {originalSource && (
+                <div 
+                  className="bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
+                  onClick={handleSourceClick}
+                >
+                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+                </div>
+              )}
+            </div>
+
+            {/* Mute Button when playing */}
+            <div
+              className="absolute bottom-3 left-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
+              onClick={toggleMute}
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              {isMuted ? (
+                <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+              ) : (
+                <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
+              )}
+            </div>
+          </>
         )}
       </motion.div>
     </>
   );
-} 
+}

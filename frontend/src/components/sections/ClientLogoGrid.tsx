@@ -56,7 +56,7 @@ const clientData = [
   },
   {
     id: 7,
-    name: "Zoina",
+    name: "Zoina Shaikh",
     imageUrl: "/clients/Img 7 - Zoina.jpg",
     youtubeUrl: "",
     instagramUrl: "https://www.instagram.com/crypto_zoina/",
@@ -88,7 +88,7 @@ const clientData = [
   },
   {
     id: 11,
-    name: "halal mix",
+    name: "Halal Mix",
     imageUrl: "/clients/Img 11 halal mix.jpg",
     youtubeUrl: "",
     instagramUrl: "https://www.instagram.com/thehalalmix/",
@@ -96,7 +96,7 @@ const clientData = [
   },
   {
     id: 12,
-    name: "space frenz",
+    name: "Space Frenz",
     imageUrl: "/clients/img 12 space frenz.jpg",
     youtubeUrl: "https://www.youtube.com/@spacefrenz",
     instagramUrl: "https://www.instagram.com/spacefrenz/",
@@ -112,18 +112,50 @@ const clientData = [
   },
   {
     id: 14,
-    name: "kristina",
+    name: "Kristina",
     imageUrl: "/clients/img 14 kristina.jpg",
     youtubeUrl: "",
     instagramUrl: "https://www.instagram.com/mannerswithkristina/?hl=en",
     designation: "Etiqutte Coach"
+  },
+  {
+    id: 15,
+    name: "Rise Up Creators",
+    imageUrl: "/clients/img 15 -rise up creators.jpg",
+    youtubeUrl: "",
+    instagramUrl: "",
+    designation: "Indie Singer"
+  },
+  {
+    id: 16,
+    name: "Urvi Gohil",
+    imageUrl: "/clients/img 16 - urvi gohil.jpg",
+    youtubeUrl: "https://www.youtube.com/@enrichlifestylewithurvi",
+    instagramUrl: "https://www.instagram.com/enrich_lifestyle_with_urvi/",
+    designation: "Clinical Dietitian"
+  },
+  {
+    id: 17,
+    name: "Anil Gupta",
+    imageUrl: "/clients/img 17 anil gupta.jpg", 
+    youtubeUrl: "",
+    instagramUrl: "https://www.instagram.com/astrologistar/",
+    designation: "Astrologer | CA"
+  },
+  {
+    id: 18,
+    name: "Pooja Bhalla",
+    imageUrl: "/clients/img 18 pooja bhalla.jpg",
+    youtubeUrl: "https://www.youtube.com/@easyvasstu",
+    instagramUrl: "https://www.instagram.com/easyvasstu9/",
+    designation: "Astrologist"
   }
 ];
 
-// First row: first 7 clients
-const firstRowClients = clientData.slice(0, 7);
-// Second row: last 7 clients
-const secondRowClients = clientData.slice(7, 14);
+// First row: first 9 clients
+const firstRowClients = clientData.slice(0, 9);
+// Second row: last 9 clients
+const secondRowClients = clientData.slice(9, 18);
 
 interface ClientLogoProps {
   client: typeof clientData[0];
@@ -136,7 +168,7 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover, activeClientId
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isActive = activeClientId === client.id;
-  const isTop = client.id <= 7;
+  const isTop = client.id <= 9;
 
   // Handle outside clicks for mobile
   useEffect(() => {
@@ -214,7 +246,7 @@ const ClientLogo: React.FC<ClientLogoProps> = ({ client, onHover, activeClientId
         </div>
       </div>
       {/* Logo */}
-      <div className={`h-28 w-28 md:h-40 md:w-40 lg:h-44 lg:w-44 rounded-full bg-white shadow-md flex items-center justify-center p-5 overflow-visible border-2 ${isActive ? 'border-amber-400' : 'border-amber-100'} hover:shadow-lg hover:border-amber-300 transition-all duration-300 relative`}>
+      <div className={`h-24 w-24 md:h-32 md:w-32 lg:h-38 lg:w-38 rounded-full bg-white shadow-md flex items-center justify-center p-2 overflow-visible border-2 ${isActive ? 'border-amber-400' : 'border-amber-100'} hover:shadow-lg hover:border-amber-300 transition-all duration-300 relative`}>
         <img
           src={client.imageUrl}
           alt={client.name}
@@ -235,9 +267,23 @@ const InfiniteLogoScroll = ({
   speed?: number;
 }) => {
   const [activeClientId, setActiveClientId] = useState<number | null>(null);
+const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
+
+const handleHover = (hovered: boolean, clientId: number) => {
+  if (hovered) {
+    pauseTimeout.current = setTimeout(() => {
+      setActiveClientId(clientId);
+    }, 150); // Add a small delay before pausing
+  } else {
+    if (pauseTimeout.current) {
+      clearTimeout(pauseTimeout.current);
+    }
+    setActiveClientId(null);
+  }
+  // const [activeClientId, setActiveClientId] = useState<number | null>(null);
   
-  const handleHover = (hovered: boolean, clientId: number) => {
-    setActiveClientId(hovered ? clientId : null);
+  // const handleHover = (hovered: boolean, clientId: number) => {
+  //   setActiveClientId(hovered ? clientId : null);
   };
   
   const repeatedClients = [];

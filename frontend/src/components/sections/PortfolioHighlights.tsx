@@ -173,7 +173,7 @@ function ScrollLockSection<T>({
 export default function PortfolioHighlights() {
   // Select items for each section
   const featuredLongform = longformVideos.slice(0, 6)
-  const featuredShortform = shortformVideos.slice(0, 6)
+  const featuredShortform = shortformVideos.slice(0, 7)
   const featuredThumbnails = thumbnailDesigns.slice(0, 6)
 
   // Add CSS styles directly

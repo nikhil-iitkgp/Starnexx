@@ -183,7 +183,7 @@ export function HeroSection() {
         </div>
         
         {/* Right: Clean Video Player - Only visible on lg screens and up */}
-        <div className="hidden lg:block lg:flex-1 px-4">
+        <div className="w-full lg:flex-1 px-4 mt-8 lg:mt-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -193,16 +193,17 @@ export function HeroSection() {
             onMouseLeave={() => setIsHovering(false)}
           >
             <div className="aspect-video w-full">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/yI0R0xHSSz0?si=8Fz5Y0MtFBjxLRZu&autoplay=1&mute=1&loop=1&playlist=yI0R0xHSSz0&controls=1"
-                title="Demo Reel"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <video
+                className="w-full h-full object-cover rounded-xl"
+                src="/herosectionVideo/Final-Promo-Video-Starnexx-Video-Editing-services.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                // autoplay is intentionally omitted to keep it paused initially
+              />
             </div>
             {/* Play button overlay - only visible on hover */}
-            {isHovering && (
+            {/* {isHovering && (
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -213,7 +214,7 @@ export function HeroSection() {
                   <Play className="w-8 h-8 text-white fill-white" />
                 </div>
               </motion.div>
-            )}
+            )} */}
           </motion.div>
         </div>
       </div>
