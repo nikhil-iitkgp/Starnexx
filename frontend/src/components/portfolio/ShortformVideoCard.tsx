@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Instagram, ExternalLink, Volume2, VolumeX } from 'lucide-react';
+import { Play, ExternalLink, Volume2, VolumeX } from 'lucide-react';
 
 export interface ShortformVideoProps {
   videoUrl: string;  // Local path to video file

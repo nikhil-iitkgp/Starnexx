@@ -64,7 +64,7 @@ export default function Navbar() {
       }`}
     >
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <Link to="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0" onClick={() => window.scrollTo(0, 0)}>
           <motion.img
             src={logo}
             alt="Starnexx Logo"

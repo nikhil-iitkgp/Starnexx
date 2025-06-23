@@ -33,7 +33,7 @@ export default function Footer() {
               <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full"></div>
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              At Starnex, we help creators and brands elevate their content with expert video editing and strategic digital marketing. From seamless edits to viral growth strategies, we make your content stand out. Let’s create, captivate, and grow together!
+              At Starnex, we help creators and brands elevate their content with expert video editing and strategic digital marketing. From seamless edits to viral growth strategies, we make your content stand out. Let's create, captivate, and grow together!
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61576180358590" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center group border border-amber-100 hover:border-amber-300 transition-all duration-300 hover:bg-amber-50">
@@ -160,11 +160,11 @@ export default function Footer() {
               © {currentYear} <Link to="/" className="text-amber-600 font-semibold hover:text-amber-500 transition-colors">Starnexx</Link>. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
-              <Link to="/privacy" className="text-sm text-gray-600 hover:text-amber-600 transition-colors">
+              <Link to="/privacy-policy" className="text-sm text-gray-600 hover:text-amber-600 transition-colors" onClick={() => window.scrollTo(0, 0)}>
                 Privacy Policy
               </Link>
               <div className="h-4 w-0.5 bg-amber-100 rounded-full"></div>
-              <Link to="/terms" className="text-sm text-gray-600 hover:text-amber-600 transition-colors">
+              <Link to="/terms-of-service" className="text-sm text-gray-600 hover:text-amber-600 transition-colors" onClick={() => window.scrollTo(0, 0)}>
                 Terms of Service
               </Link>
             </div>
