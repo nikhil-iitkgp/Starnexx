@@ -20,13 +20,14 @@ export default function LongformVideoCard({ youtubeUrl }: LongformVideoProps) {
     return match && match[1] ? match[1] : null;
   };
 
-  // Get YouTube embed URL with autoplay, mute, loop
+  // Get YouTube embed URL with autoplay, mute, loop, and clean UI
   const getEmbedUrl = () => {
     const id = getVideoId(youtubeUrl);
     return id
-      ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&rel=0`
+      ? `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&rel=0&modestbranding=1&iv_load_policy=3&fs=1&controls=1`
       : '';
   };
+
 
   // Get thumbnail URL
   useEffect(() => {

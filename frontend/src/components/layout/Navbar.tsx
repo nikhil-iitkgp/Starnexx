@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
-import logo from "../../assets/name-black-05.png";
+import logo from "../../assets/Logo.png";
 
 const navLinks = [
   { name: "Home", to: "/" },
@@ -68,7 +68,7 @@ export default function Navbar() {
           <motion.img
             src={logo}
             alt="Starnexx Logo"
-            className="h-12 w-auto object-contain"
+            className="h-10 w-auto sm:h-12 md:h-14 max-w-[180px] object-contain"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
@@ -108,7 +108,7 @@ export default function Navbar() {
             <SheetContent side="right" className="bg-gradient-to-br from-amber-50 via-[#FFFAF0] to-white p-8 rounded-l-3xl shadow-2xl border-l-2 border-amber-100 min-w-[260px] max-w-xs flex flex-col gap-2">
               <div className="flex justify-between items-center mb-8">
                 <Link to="/" className="flex items-center gap-2" onClick={() => {setOpen(false); window.scrollTo(0, 0);}}>
-                  <img src={logo} alt="Starnexx Logo" className="h-10 w-auto object-contain" />
+                  <img src={logo} alt="Starnexx Logo" className="h-10 w-auto sm:h-12 md:h-14 max-w-[180px] object-contain" />
                 </Link>
                 <span onClick={() => setOpen(false)} className="flex items-center justify-center w-10 h-10">
                   <HamburgerIcon open={true} />

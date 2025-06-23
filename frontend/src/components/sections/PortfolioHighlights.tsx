@@ -1,7 +1,7 @@
 import { longformVideos } from "@/data/longformVideoData"
 import { shortformVideos } from "@/data/shortformVideoData"
 import { thumbnailDesigns } from "@/data/thumbnailData"
-import { VideoIcon, ImageIcon } from "lucide-react"
+import { VideoIcon, ImageIcon, Smartphone } from "lucide-react"
 import { useRef, useEffect } from "react"
 import LongformVideoCard from "@/components/portfolio/LongformVideoCard"
 import ShortformVideoCard from "@/components/portfolio/ShortformVideoCard"
@@ -136,7 +136,7 @@ function ScrollLockSection<T>({
             className="hidden-scrollbar h-[500px] sm:h-[600px] md:h-[760px] px-1 sm:px-2 overflow-y-auto"
             style={{ background: 'transparent', boxShadow: 'none', border: 'none' }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 h-auto pb-4" 
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 h-auto pb-4" 
                  style={{ background: 'transparent', boxShadow: 'none', border: 'none' }}>
               {items.map((item, idx) => (
                 <div 
@@ -280,7 +280,7 @@ export default function PortfolioHighlights() {
           items={featuredShortform.slice(1)}
           bg="bg-transparent border-2 border-amber-100/50"
           label="Shortform"
-          icon={<VideoIcon size={24} strokeWidth={2} className="rotate-90 text-amber-500" />}
+          icon={<Smartphone size={24} strokeWidth={2} className="text-amber-500" />}
           renderItem={(video, index) => <ShortformVideoCard key={index} {...video} />}
         />
         

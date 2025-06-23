@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
-import logo from "../../assets/StarnexLogo.png"
+import logo from "../../assets/FullLogo.png"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

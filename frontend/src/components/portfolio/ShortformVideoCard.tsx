@@ -165,13 +165,13 @@ export default function ShortformVideoCard({
               <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="white" />
             </div>
 
-            {/* Instagram Icon */}
+            {/* Redirect Icon (ExternalLink) - always visible if originalSource exists */}
             {originalSource && (
               <div 
                 className="absolute bottom-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer touch-feedback"
                 onClick={handleSourceClick}
               >
-                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-pink-600" />
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
               </div>
             )}
 

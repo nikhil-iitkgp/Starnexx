@@ -155,11 +155,11 @@ export function HeroSection() {
               className="relative"
             >
               <Button
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-full shadow-xl px-10 py-4 text-lg flex items-center gap-2 transition-all border-none scale-100 hover:scale-105 active:scale-95 duration-200"
+                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 !text-white font-bold rounded-full shadow-xl px-10 py-4 text-lg flex items-center gap-2 transition-all border-none scale-100 hover:scale-105 active:scale-95 duration-200"
                 onClick={() => window.scrollTo(0, 0)}
                 asChild={false}
               >
-                <Link to="/contact" className="flex items-center gap-2 no-underline text-white">
+                <Link to="/contact" className="flex items-center gap-2 no-underline !text-white">
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
