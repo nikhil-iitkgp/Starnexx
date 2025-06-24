@@ -136,7 +136,7 @@ function ScrollLockSection<T>({
             className="hidden-scrollbar h-[500px] sm:h-[600px] md:h-[760px] px-1 sm:px-2 overflow-y-auto"
             style={{ background: 'transparent', boxShadow: 'none', border: 'none' }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 h-auto pb-4" 
+            <div className="grid grid-cols-1 [@media(min-width:1150px)]:grid-cols-2 gap-3 sm:gap-4 h-auto pb-4" 
                  style={{ background: 'transparent', boxShadow: 'none', border: 'none' }}>
               {items.map((item, idx) => (
                 <div 
